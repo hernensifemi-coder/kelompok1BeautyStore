@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beauty Store</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">
+      <img src="images/logo.jpeg" alt="Logo" class="logo-img">
+      <span>Beauty Store</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home">Beranda</a></li>
+      <li><a href="#products">Produk</a></li>
+      <li><a href="#about">Tentang</a></li>
+      <li><a href="#contact">Kontak</a></li>
+    </ul>
+    <div class="cart" id="cart-btn">
+      🛒 <span id="cart-count">0</span>
+    </div>
+  </nav>
+
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Temukan Kecantikan Alami dalam Dirimu</h1>
+      <p>Produk skincare & makeup berkualitas untuk kulit sehat dan bercahaya</p>
+      <a href="#products" class="btn">Belanja Sekarang</a>
+    </div>
+  </section>
+
+  <section id="products" class="products">
+    <h2>Produk Unggulan Kami</h2>
+    <p class="section-desc">Pilihan terbaik untuk merawat kulitmu setiap hari</p>
+    
+    <div class="filter-container">
+      <input type="text" id="search-input" placeholder="Cari nama produk...">
+      <div class="category-buttons">
+        <button class="filter-btn active" data-category="all">Semua</button>
+        <button class="filter-btn" data-category="skincare">Skincare</button>
+        <button class="filter-btn" data-category="makeup">Makeup</button>
+      </div>
+    </div>
+
+    <div class="product-grid" id="product-list"></div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="about-content">
+      <h2>Tentang Beauty Store</h2>
+      <p>
+        Beauty Store adalah toko kecantikan yang berkomitmen menghadirkan produk skincare dan makeup berkualitas tinggi dengan harga yang terjangkau. 
+        Kami percaya bahwa kecantikan sejati dimulai dari perawatan yang tepat dan rasa percaya diri.
+      </p>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Hubungi Kami</h2>
+    <p class="section-desc">Ada pertanyaan? Silakan kirim pesan kepada kami</p>
+    <form id="contact-form">
+      <input type="text" placeholder="Nama Lengkap" required>
+      <input type="email" placeholder="Email" required>
+      <textarea placeholder="Tulis pesanmu di sini..." rows="5" required></textarea>
+      <button type="submit" class="btn">Kirim Pesan</button>
+    </form>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">Beauty Store</div>
+      <p>© 2026 Beauty Store. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div class="cart-modal" id="cart-modal">
+    <div class="cart-content">
+      <div class="cart-header">
+        <h3>Keranjang Belanja</h3>
+        <span class="close-modal" id="close-cart">&times;</span>
+      </div>
+      <div id="cart-items">
+        <p class="empty-cart">Keranjang masih kosong</p>
+      </div>
+      <div class="cart-footer">
+        <div class="cart-total">
+          Total: <span id="cart-total">Rp 0</span>
+        </div>
+        <button class="btn checkout-btn" id="checkout-btn">Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="cart-modal" id="payment-modal">
+    <div class="cart-content payment-content">
+      <div class="cart-header">
+        <h3>Detail Pembayaran</h3>
+        <span class="close-modal" id="close-payment">&times;</span>
+      </div>
+      <div class="payment-body">
+        <div class="payment-summary">
+          <span>Total Tagihan:</span>
+          <strong id="payment-total">Rp 0</strong>
+        </div>
+
+        <form id="payment-form">
+          <div class="form-group">
+            <label for="cust-name">Nama Penerima</label>
+            <input type="text" id="cust-name" placeholder="Nama Lengkap" required>
+          </div>
+
+          <div class="form-group">
+            <label for="cust-phone">Nomor Telepon / WhatsApp</label>
+            <input type="tel" id="cust-phone" placeholder="Nomor Telepon" required>
+          </div>
+
+          <div class="form-group">
+            <label for="cust-address">Alamat Pengiriman</label>
+            <textarea id="cust-address" rows="3" placeholder="Alamat Lengkap" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Metode Pembayaran</label>
+            <div class="payment-options">
+              <label class="payment-option">
+                <input type="radio" name="payment_method" value="QRIS / E-Wallet" checked>
+                <span>QRIS / E-Wallet</span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="payment_method" value="Transfer Bank">
+                <span>Transfer Bank</span>
+              </label>
+              <label class="payment-option">
+                <input type="radio" name="payment_method" value="COD">
+                <span>COD (Bayar di Tempat)</span>
+              </label>
+            </div>
+          </div>
+
+          <button type="submit" class="btn pay-btn">Konfirmasi & Bayar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="cart-modal" id="success-modal">
+    <div class="cart-content success-content">
+      <div class="success-icon">✓</div>
+      <h3>Pesanan Berhasil Disimpan</h3>
+      <p class="success-desc">Terima kasih telah berbelanja di Beauty Store.</p>
+      
+      <div class="order-receipt" id="order-receipt"></div>
+
+      <button class="btn btn-close-success" id="close-success-btn">Selesai Belanja</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
